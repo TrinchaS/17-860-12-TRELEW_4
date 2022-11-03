@@ -15,25 +15,6 @@ def ordenar_seleccion(lista):
             lista[indice] , lista[mini + indice] = lista[mini + indice] , lista[indice]
     return lista
 
-
-######## terminar###########
-def ordena_insercion(lista):
-    for indice in range(len(lista)):
-        inserta(elemento,lista[0:indice])
-
-def inserta(elemento,lista):
-    if lista:
-        
-    else:
-        return [elemento]
-    
-
-    for (indice,elemento) in enumerate(lista):
-        if (valor > elemnto):
-            x:y:xs
-################################
-
-
 def minimo(lista):
     posicion = 0
     for (indice,elemnto) in enumerate(lista):
@@ -42,6 +23,29 @@ def minimo(lista):
     return posicion
 
 
+# lista[1:] y n+1 porque se supone que el primer elemento esta ordenado
+def ordena_insercion(lista):
+	for n,l in enumerate(lista[1:]):
+		inserta(n+1,lista)
 
-rta = ordenar([11,2,4,1,6,8,9])
-print(rta)
+#busca un elemento mayor al lista[indice], si lo encuentra hace el desplazo
+def inserta (indice,lista):
+	posicion = mayorA(lista[indice],lista[0:indice+1])
+	if posicion > -1:
+		desplaza(posicion,indice,lista)
+	
+#retorna la posicion del elemento de la lista mayor a 'e', -1 si no lo encuentra		
+def mayorA (e, lista):
+	indice = 0 
+	for l in lista:
+		if l>e:
+			return indice
+		indice += 1
+	return -1
+
+#inicio-fin es la sub-lista que voy a desplazar siempre para la derecha llevando el ultimo elemento al principio
+def desplaza(inicio, fin , lista):
+	if inicio < fin :
+		lista[inicio] , lista[inicio+1:fin+1] = lista[fin] , lista[inicio:fin]
+
+
