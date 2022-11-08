@@ -3,9 +3,9 @@
 
 def funcion_confusa_7(a, b):
 	if (a < 10):	#1
-    	return b
+        return b
 	r = 1			#1
-	for i in range(a):	#n>a veces
+	for i in range(a):	#n>=10 veces
 		for j in range(b):  #m = b 
 			r = r * i * j   #1
 	return r 		#1
@@ -13,7 +13,7 @@ def funcion_confusa_7(a, b):
 	#for mas interno --> m veces
 	#for mas externo --> n*m veces
 
-	# O(n,m) = m*n + 3 ==> n^2
+	# O(n,m) = 1 + 1+ m*(n * 1) + 1 ==> m=n para simplificar ==> n^2 + 3 ==> n^2
 
 
 #Ejercicio: Reducir las siguientes complejidades:
@@ -34,7 +34,7 @@ def buscar(vector, elemento):
 			return index
 		index += 1		#1
 	return -1			#1
-# O(buscar(n,e) = n 
+# O(buscar(n,e)) = n 
 
 
 
@@ -62,7 +62,7 @@ def swap(vector, pos1, pos2):
 
 def ordenar(vector):
 	for i in range(len(vector)):	#n
-		pos_maximo = buscar_maximo(vector[i:])	#(n-1)
+		pos_maximo = buscar_maximo(vector[i:])	#1 + (n-1)
 		swap(vector, i, i + pos_maximo)	#3
 	return vector
 	# O(ordenar) = n*((n-1)+3) = n^2
