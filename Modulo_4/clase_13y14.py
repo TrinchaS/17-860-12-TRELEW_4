@@ -88,20 +88,65 @@ class Lista:
 #Ejercicio: Implementar una función que reciba una lista enlazada y retorne
 #una nueva lista solo con los elementos en las posiciones pares de la original
 
-#TERMINAR
-#def pares(lista):
+def pares(lista):
+    nuevaLista = Lista()
+    nuevaLista.primero = lista.primero
+    valor = nuevaLista.primero
+    while valor != None:
+        siguiente = valor.proximo
+        if siguiente != None:
+            valor.proximo = siguiente.proximo
+        else:
+            valor.proximo = None
+        valor = valor.proximo
+    return nuevaLista
 
 
-nodo1 = Nodo("valor 1")
-nodo2 = Nodo("valor 2")
-nodo3 = Nodo("valor 3")
-nodo4 = Nodo("valor 4")
+#Ejercicio
+#DIFÍCIL: Implementar una función que reciba una lista enlazada e invierta el orden
+#(de vuelta las flechas)
+
+def invierte(lista):
+    actual = lista.primero
+    siguiente = None
+    if actual != None:
+        siguiente = actual.proximo
+        actual.proximo = None
+        lista.primero = actual
+    while siguiente != None: #por lo menos tengo 2 elementos
+        siguiente.proximo , sig = actual , siguiente.proximo
+        lista.primero = siguiente
+        siguiente , actual = sig , siguiente
+
+        #sig = siguiente.proximo
+        #siguiente.proximo = actual
+        #lista.primero = siguiente
+        #actual = siguiente
+        #siguiente = sig
+
+
+nodo0 = Nodo("0")
+nodo1 = Nodo("1")
+nodo2 = Nodo("2")
+nodo3 = Nodo("3")
+nodo4 = Nodo("4")
+nodo5 = Nodo("5")
+nodo6 = Nodo("6")
+nodo7 = Nodo("7")
 
 listaEjemplo = Lista()
 
-listaEjemplo.insertar_al_principio(nodo1)
-listaEjemplo.inserta(1,nodo2)
-listaEjemplo.inserta(2,nodo3)
-listaEjemplo.inserta(3,nodo4)
-
+listaEjemplo.insertar_al_principio(nodo0)
+listaEjemplo.inserta(1,nodo1)
+listaEjemplo.inserta(2,nodo2)
+listaEjemplo.inserta(3,nodo3)
+listaEjemplo.inserta(4,nodo4)
+listaEjemplo.inserta(5,nodo5)
+listaEjemplo.inserta(6,nodo6)
+listaEjemplo.inserta(7,nodo7)
 print(listaEjemplo)
+invierte(listaEjemplo)
+print(listaEjemplo)
+
+
+# FALTA
